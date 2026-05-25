@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Combina y Ahorra — Propuesta Piloto Turbo</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f3; color: #1a1a1a; padding: 40px 24px; }
+  .page { max-width: 860px; margin: 0 auto; }
+  .header { margin-bottom: 36px; }
+  .header h1 { font-size: 22px; font-weight: 600; margin-bottom: 4px; }
+  .header p { font-size: 13px; color: #888; }
+  .sec-label { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; color: #999; text-transform: uppercase; margin-bottom: 10px; }
+  .section-gap { margin-bottom: 28px; }
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 28px; }
+  .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .grid2x2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 28px; }
+  .mcard { background: #efefec; border-radius: 8px; padding: 14px 16px; }
+  .mcard .mlabel { font-size: 11px; color: #888; margin-bottom: 4px; }
+  .mcard .mnum { font-size: 22px; font-weight: 600; margin-bottom: 2px; }
+  .mcard .msub { font-size: 11px; color: #888; }
+  .card { background: #fff; border: 0.5px solid #e0dfd8; border-radius: 12px; padding: 16px 20px; }
+  .tcard { background: #fff; border: 0.5px solid #e0dfd8; border-radius: 12px; padding: 16px 20px; }
+  .tcard-hl { border: 2px solid #378ADD; }
+  .badge { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 6px; margin-bottom: 8px; }
+  .b-gray { background: #F1EFE8; color: #444441; }
+  .b-blue { background: #E6F1FB; color: #185FA5; }
+  .b-teal { background: #E1F5EE; color: #0F6E56; }
+  .b-amber { background: #FAEEDA; color: #854F0B; }
+  .best-badge { background: #E6F1FB; color: #185FA5; font-size: 11px; padding: 2px 8px; border-radius: 6px; margin-left: 6px; font-weight: 500; }
+  .ttitle { font-size: 14px; font-weight: 600; margin-bottom: 5px; }
+  .tdesc { font-size: 12px; color: #666; line-height: 1.55; margin-bottom: 10px; }
+  .row-kv { display: flex; justify-content: space-between; align-items: baseline; padding: 5px 0; border-top: 0.5px solid #ebebeb; }
+  .kv-key { font-size: 12px; color: #888; }
+  .kv-val { font-size: 12px; font-weight: 600; text-align: right; max-width: 55%; }
+  .warn-box { background: #FAEEDA; border-radius: 7px; padding: 8px 12px; font-size: 12px; color: #854F0B; line-height: 1.5; margin-top: 10px; }
+  .info-box { background: #E6F1FB; border-radius: 7px; padding: 8px 12px; font-size: 12px; color: #185FA5; line-height: 1.5; margin-top: 10px; }
+  .anchor-row { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+  .anchor-line { flex: 1; height: 0.5px; background: #e0dfd8; }
+  .tag-p0 { background: #FAECE7; color: #993C1D; font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 6px; white-space: nowrap; }
+  .anchor-text { font-size: 12px; color: #666; }
+  .formula { background: #f5f5f3; border-radius: 8px; padding: 14px 16px; font-size: 12px; color: #666; line-height: 1.7; }
+  .formula strong { color: #1a1a1a; font-weight: 600; }
+  .metric-inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .metric-col .metric-title { font-size: 12px; font-weight: 600; margin-bottom: 6px; }
+  .metric-col .metric-body { font-size: 12px; color: #666; line-height: 1.6; }
+  .pending-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
+  .pending-item { display: flex; justify-content: space-between; padding: 7px 0; border-top: 0.5px solid #ebebeb; }
+  .pending-item:nth-child(odd) { padding-right: 16px; border-right: 0.5px solid #ebebeb; }
+  .pending-item:nth-child(even) { padding-left: 16px; }
+  .pending-key { font-size: 12px; color: #888; }
+  .pending-val { font-size: 12px; font-style: italic; color: #aaa; }
+  .section-title { font-size: 15px; font-weight: 600; margin-bottom: 12px; }
+  .divider { border: none; border-top: 0.5px solid #e0dfd8; margin: 20px 0; }
+  .reasoning-box { background: #fff; border: 0.5px solid #e0dfd8; border-radius: 12px; padding: 16px 20px; margin-bottom: 28px; }
+  .reasoning-box p { font-size: 13px; color: #555; line-height: 1.7; margin-bottom: 8px; }
+  .reasoning-box p:last-child { margin-bottom: 0; }
+  .footer { font-size: 11px; color: #bbb; text-align: center; margin-top: 40px; padding-top: 20px; border-top: 0.5px solid #e0dfd8; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <h1>Combina y Ahorra — Propuesta Piloto Turbo</h1>
+    <p>Rappi Turbo · Budget 100% interno · País por confirmar</p>
+  </div>
+
+  <div class="sec-label">contexto del piloto</div>
+  <div class="grid4">
+    <div class="mcard">
+      <div class="mlabel">Mecánica</div>
+      <div class="mnum">Bundle</div>
+      <div class="msub">descuento al sumar items</div>
+    </div>
+    <div class="mcard">
+      <div class="mlabel">Descuento</div>
+      <div class="mnum">10%</div>
+      <div class="msub">si llevas mínimo 3 productos</div>
+    </div>
+    <div class="mcard">
+      <div class="mlabel">SKUs en bundle</div>
+      <div class="mnum">5%</div>
+      <div class="msub">del portafolio activo Turbo</div>
+    </div>
+    <div class="mcard">
+      <div class="mlabel">Budget</div>
+      <div class="mnum">Turbo</div>
+      <div class="msub">100% interno, por definir</div>
+    </div>
+  </div>
+
+  <div class="anchor-row">
+    <span class="tag-p0">Regla fija</span>
+    <div class="anchor-line"></div>
+    <span class="anchor-text">Todos los combos incluyen al menos un producto P0 (Infaltable) como gancho</span>
+    <div class="anchor-line"></div>
+  </div>
+
+  <div class="sec-label section-gap">estructura del experimento — 4 brazos</div>
+  <div class="grid2x2">
+
+    <div class="tcard">
+      <div class="badge b-gray">Control</div>
+      <div class="ttitle">Descuento simple</div>
+      <div class="tdesc">El usuario recibe ~3.3% directo sobre cualquier ítem, sin necesidad de armar un combo. Mismos SKUs disponibles, sin mecánica de bundle.</div>
+      <div class="row-kv"><span class="kv-key">Tipo de descuento</span><span class="kv-val">~3.3% por ítem</span></div>
+      <div class="row-kv"><span class="kv-key">Items mínimos</span><span class="kv-val">Sin requisito</span></div>
+      <div class="row-kv"><span class="kv-key">SKU secundario</span><span class="kv-val">Sin restricción</span></div>
+      <div class="row-kv"><span class="kv-key">Lo que mide</span><span class="kv-val">Baseline promo tradicional</span></div>
+      <div class="info-box">Referencia para demostrar que el formato bundle genera más AOV que el mismo presupuesto en promo directa</div>
+    </div>
+
+    <div class="tcard">
+      <div class="badge b-blue">T1 — Infaltables</div>
+      <div class="ttitle">P0 + related products</div>
+      <div class="tdesc">El Infaltable como ancla con SKUs complementarios naturales de la misma categoría o categorías afines al producto líder.</div>
+      <div class="row-kv"><span class="kv-key">Descuento</span><span class="kv-val">10% al completar combo</span></div>
+      <div class="row-kv"><span class="kv-key">Items mínimos</span><span class="kv-val">3</span></div>
+      <div class="row-kv"><span class="kv-key">SKU secundario</span><span class="kv-val">Complementario natural</span></div>
+      <div class="row-kv"><span class="kv-key">Lo que mide</span><span class="kv-val">¿El bundle suma sobre lo natural?</span></div>
+      <div class="warn-box">⚠️ Riesgo: el usuario ya iba a comprar estos juntos. Sirve como punto de referencia, no como el test más revelador</div>
+    </div>
+
+    <div class="tcard tcard-hl">
+      <div style="display:flex;align-items:center;margin-bottom:8px">
+        <span class="badge b-teal" style="margin-bottom:0">T2 — Retención</span>
+        <span class="best-badge">Test clave</span>
+      </div>
+      <div class="ttitle">P0 + alto tráfico y retención</div>
+      <div class="tdesc">Infaltable combinado con SKUs que ya tienen buena tracción pero se quieren consolidar como hábito de compra conjunto recurrente.</div>
+      <div class="row-kv"><span class="kv-key">Descuento</span><span class="kv-val">10% al completar combo</span></div>
+      <div class="row-kv"><span class="kv-key">Items mínimos</span><span class="kv-val">3</span></div>
+      <div class="row-kv"><span class="kv-key">SKU secundario</span><span class="kv-val">Top tráfico + retención</span></div>
+      <div class="row-kv"><span class="kv-key">Lo que mide</span><span class="kv-val">¿El bundle refuerza hábito?</span></div>
+      <div class="info-box">Hipótesis más fuerte de recompra a 60 días — combinar dos productos ya amados crea el hábito más sólido</div>
+    </div>
+
+    <div class="tcard">
+      <div class="badge b-amber">T3 — Trial</div>
+      <div class="ttitle">P0 + non-movers</div>
+      <div class="tdesc">Usar la gravedad del Infaltable para generar trial de SKUs de baja rotación, innovaciones o tamaños grandes que no se mueven solos.</div>
+      <div class="row-kv"><span class="kv-key">Descuento</span><span class="kv-val">10% al completar combo</span></div>
+      <div class="row-kv"><span class="kv-key">Items mínimos</span><span class="kv-val">3</span></div>
+      <div class="row-kv"><span class="kv-key">SKU secundario</span><span class="kv-val">Baja rotación / innovaciones</span></div>
+      <div class="row-kv"><span class="kv-key">Lo que mide</span><span class="kv-val">¿El P0 arrastra trial real?</span></div>
+      <div class="info-box">Mayor valor estratégico para portafolio largo — si funciona, es el argumento para venderlo a marcas</div>
+    </div>
+
+  </div>
+
+  <div class="sec-label section-gap">¿por qué el mismo 10% para los 3 tests?</div>
+  <div class="reasoning-box">
+    <p>El descuento se mantiene fijo en 10% para los tres brazos de bundle por razón experimental: si se varía el descuento entre tests, se confunden dos variables al mismo tiempo (tipo de SKU y nivel de descuento), haciendo imposible aislar qué generó el resultado.</p>
+    <p>Con 10% fijo, la única variable que cambia es la composición del SKU secundario — que es exactamente lo que se quiere aprender.</p>
+    <p>Si T3 (non-movers) underperforma, el aprendizaje es claro: el umbral de descuento para mover un non-mover es mayor a 10%. Eso es información valiosa para la fase 2 y para la conversación con marcas.</p>
+  </div>
+
+  <div class="sec-label section-gap">lo que mide cada brazo</div>
+  <div class="card section-gap">
+    <div class="metric-inner">
+      <div class="metric-col">
+        <div class="metric-title">Métrica primaria</div>
+        <div class="metric-body">AOV (ticket promedio) — unidades por pedido. La razón de ser del producto.</div>
+      </div>
+      <div class="metric-col">
+        <div class="metric-title">Métricas secundarias</div>
+        <div class="metric-body">Tasa de conversión al combo · Penetración del SKU secundario · Recompra del SKU secundario a 30 y 60 días</div>
+      </div>
+      <div class="metric-col">
+        <div class="metric-title">Guardrail</div>
+        <div class="metric-body">Order rate general no debe caer. Budget consumido vs incremento de AOV. ROI del descuento.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-label section-gap">lógica de budget</div>
+  <div class="grid2" style="margin-bottom:28px">
+    <div class="formula">
+      <strong>Fórmula por brazo</strong><br>
+      Budget = Órdenes en piloto<br>
+      × % conversión al bundle<br>
+      × AOV del SKU secundario<br>
+      × 10% (descuento fijo)
+    </div>
+    <div class="formula">
+      <strong>Inputs necesarios (por país)</strong><br>
+      · Órdenes/día con P0s involucrados<br>
+      · Duración del piloto (sugerencia: 4–6 sem)<br>
+      · AOV base por categoría<br>
+      · # SKUs = 5% del portafolio activo
+    </div>
+  </div>
+
+  <div class="sec-label section-gap">decisiones pendientes</div>
+  <div class="card">
+    <div class="pending-row">
+      <div class="pending-item"><span class="pending-key">País del piloto</span><span class="pending-val">Por confirmar</span></div>
+      <div class="pending-item"><span class="pending-key">Duración del piloto</span><span class="pending-val">Por definir (sugerencia: 4–6 sem)</span></div>
+      <div class="pending-item"><span class="pending-key">Selección de SKUs por test</span><span class="pending-val">Requiere datos de portafolio</span></div>
+      <div class="pending-item"><span class="pending-key">Budget total</span><span class="pending-val">Se calcula con datos del país</span></div>
+    </div>
+  </div>
+
+  <div class="footer">Propuesta elaborada para Rappi Turbo · Combina y Ahorra pilot</div>
+
+</div>
+</body>
+</html>
